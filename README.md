@@ -50,21 +50,13 @@ The FAID project revolutionizes the detection of deepfake content through advanc
     │   ├── gen_database.py
     │   ├── infer.py
     │   ├── requirements.txt
-    │   ├── script
-    │   │   ├── gen_database.sh
-    │   │   ├── infer.sh
-    │   │   ├── test.sh
-    │   │   ├── test_from_database.sh
-    │   │   └── train.sh
     │   ├── src
-    │   │   ├── __init__.py
     │   │   ├── index.py
     │   │   ├── simclr.py
     │   │   └── text_embedding.py
     │   ├── test_from_database.py
     │   ├── train_classifier.py
     │   └── utils
-    │       ├── __init__.py
     │       ├── load_dataset.py
     │       └── utils.py
     └── data
@@ -105,110 +97,6 @@ The FAID project revolutionizes the detection of deepfake content through advanc
             ├── mistral-text
             └── qwen-text
 ```
-
-
-### 📂 Project Index
-<details open>
-	<summary><b><code>FAID/</code></b></summary>
-	<details> <!-- algorithm Submodule -->
-		<summary><b>algorithm</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/test_from_database.py'>test_from_database.py</a></b></td>
-				<td>- Evaluates the performance of text embedding models on test datasets, both in-domain and out-of-domain, using fuzzy k-nearest neighbors classification<br>- It measures accuracy, precision, recall, F1 score, MSE, and MAE across different values of K, optimizing model parameters and visualizing results to identify the best configuration.</td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/infer.py'>infer.py</a></b></td>
-				<td>- `algorithm/infer.py` serves as the inference module, utilizing a pre-trained text embedding model to process input text, generate embeddings, and perform k-nearest neighbors search against a serialized index<br>- It classifies the text based on the proximity of its embeddings to known labeled data, determining if the source is human, AI, or mixed.</td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/gen_database.py'>gen_database.py</a></b></td>
-				<td>- Generates and manages embeddings for textual data, facilitating the creation and updating of searchable databases<br>- It supports distributed processing for scalability and includes functionality to handle both in-domain and out-of-domain datasets, ensuring robustness across different data types<br>- The script also provides tools for serialization and deserialization of indexed data.</td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/requirements.txt'>requirements.txt</a></b></td>
-				<td>- Specifies the dependencies required for the algorithm component of the project, ensuring compatibility and functionality across various machine learning and data processing libraries<br>- It includes essential libraries for data manipulation, progress tracking, neural network modeling, natural language processing, and visualization, facilitating a robust environment for algorithm development and experimentation.</td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/train_classifier.py'>train_classifier.py</a></b></td>
-				<td>- The `train_classifier.py` file is a critical component of the project's machine learning pipeline, specifically designed for training classification models<br>- This script integrates various machine learning and deep learning libraries and frameworks to set up, train, and evaluate classifiers using textual data<br>- Its primary function is to orchestrate the training process, which includes data loading, model initialization, setting up the training loop, and logging the training progress.
-
-Key functionalities of this script include:
-1<br>- **Data Preparation**: It loads and preprocesses text data, ensuring it is in the correct format for training using utilities like `load_dataset` and tokenization processes.
-2<br>- **Model Setup**: It initializes models for text classification, leveraging pre-trained models and custom classifier layers, which are crucial for handling the specifics of the text data.
-3<br>- **Training Loop**: The script manages the training process, including setting random seeds for reproducibility, configuring data loaders for batch processing of data, and defining the optimization strategy.
-4<br>- **Logging and Metrics**: Utilizes `SummaryWriter` for TensorBoard to log training metrics and progress, which is vital for monitoring the training process and outcomes.
-5<br>- **Evaluation**: Implements functions to compute and calculate metrics, aiding in the assessment of the classifier's performance during and after training.
-
-In the broader scope of the project, `train_classifier.py` serves as the executable script that directly impacts the model's performance by handling the training operations efficiently<br>- It interacts with various modules of the project such as `src` for model definitions, `utils` for utility functions, and `lightning` for leveraging PyTorch Lightning capabilities, indicating its integral role in the machine learning workflow of the codebase.</td>
-			</tr>
-			</table>
-			<details>
-				<summary><b>src</b></summary>
-				<blockquote>
-					<table>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/src/text_embedding.py'>text_embedding.py</a></b></td>
-						<td>- TextEmbeddingModel, defined in algorithm/src/text_embedding.py, serves as a core component for generating normalized text embeddings using pre-trained transformer models<br>- It supports various pooling strategies and can handle different transformer architectures, adapting its behavior based on the model's specific characteristics to optimize text representation within the broader system.</td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/src/index.py'>index.py</a></b></td>
-						<td>- Indexer, a core component within the algorithm module, manages the indexing, searching, and serialization of vector data using FAISS<br>- It supports operations on GPU, handles large-scale vector searches efficiently, and maintains a mapping between internal and external identifiers, facilitating quick retrieval and robust data management across the system's architecture.</td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/src/simclr.py'>simclr.py</a></b></td>
-						<td>- Defines and implements a SimCLR-based classifier for text embeddings, integrating a classification head for sentence-level tasks<br>- It utilizes cosine similarity for contrastive learning, supports distributed computing with fabric, and handles various classification scenarios including cross-entropy loss calculations for different label types, enhancing model training and evaluation flexibility within the project's architecture.</td>
-					</tr>
-					</table>
-				</blockquote>
-			</details>
-			<details>
-				<summary><b>script</b></summary>
-				<blockquote>
-					<table>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/script/test_from_database.sh'>test_from_database.sh</a></b></td>
-						<td>- Executes testing of deepfake detection models using a specified dataset and model checkpoint<br>- It configures the test environment for different modes including deepfake, TuringBench, and M4 challenges, both monolingual and multilingual, adjusting parameters like device number and batch size to optimize performance.</td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/script/train.sh'>train.sh</a></b></td>
-						<td>- Train.sh initiates the training of a classifier for detecting deepfakes using a pre-trained RoBERTa model from Princeton NLP<br>- It configures the model to process data from a specified path, setting parameters like device number, batch size, learning rate, and epochs, focusing on optimizing performance across different datasets within the broader architecture.</td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/script/infer.sh'>infer.sh</a></b></td>
-						<td>- Executes a deep learning model for detecting deepfake content by leveraging a pre-trained model and a specified database<br>- The script processes a given text input to assess and output the likelihood of the content being a deepfake, using the top 5 predictions<br>- This functionality is crucial for maintaining the integrity and trustworthiness of digital media within the system.</td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/script/test.sh'>test.sh</a></b></td>
-						<td>- Executes a Python script for testing a deepfake detection model using a K-nearest neighbors algorithm<br>- It configures the script to process data from a specified path, utilizing a pre-trained model, and saves the resulting database for further analysis<br>- The script is adaptable for various datasets but is currently set for the deepfake domain.</td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/script/gen_database.sh'>gen_database.sh</a></b></td>
-						<td>- Generates a training database for detecting deepfake content by executing a Python script configured for high-throughput processing on multiple devices<br>- It specifically prepares a dataset using a pre-trained model, targeting the deepfake detection domain, and stores the results in a structured database format for further use in model training and evaluation.</td>
-					</tr>
-					</table>
-				</blockquote>
-			</details>
-			<details>
-				<summary><b>utils</b></summary>
-				<blockquote>
-					<table>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/utils/load_dataset.py'>load_dataset.py</a></b></td>
-						<td>Manages the loading and preprocessing of datasets for machine learning models, supporting various dataset configurations including "FAIDset," "llmdetectaive," and "hart." It categorizes text data into human, human+AI, or AI-generated content, enriching each entry with labels and indices for further processing and analysis in model training and evaluation phases.</td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/ngocminhta/FAID/blob/master/algorithm/utils/utils.py'>utils.py</a></b></td>
-						<td>- Provides utility functions for evaluating and reporting machine learning model performance across various metrics such as accuracy, precision, recall, and F1 score<br>- It includes specialized functions for handling multi-class scenarios, binary outcomes, and specific use cases involving embeddings and unique identifiers, enhancing the interpretability of model results in diverse contexts.</td>
-					</tr>
-					</table>
-				</blockquote>
-			</details>
-		</blockquote>
-	</details>
-</details>
-
 ---
 ## 🚀 Getting Started
 
@@ -273,7 +161,8 @@ Run the test suite using the following command:
 ---
 ## 📌 News
 
-**[2025.05.20]** Our project is publicly accessible.
+**[2025.05.20]** Our research paper now publicly accessible on arXiv.
+**[2025.05.06]** Our project is publicly accessible.
 
 ---
 
@@ -291,3 +180,17 @@ This research is carried on at:
 - Natural Language Processing Department, Mohamed bin Zayed University of Artificial Intelligence.
 
 ---
+
+## 🔬 Citation
+
+```
+@misc{ta2025faidfinegrainedaigeneratedtext,
+      title={FAID: Fine-grained AI-generated Text Detection using Multi-task Auxiliary and Multi-level Contrastive Learning}, 
+      author={Minh Ngoc Ta and Dong Cao Van and Duc-Anh Hoang and Minh Le-Anh and Truong Nguyen and My Anh Tran Nguyen and Yuxia Wang and Preslav Nakov and Sang Dinh},
+      year={2025},
+      eprint={2505.14271},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2505.14271}, 
+}
+```
