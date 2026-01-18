@@ -61,41 +61,9 @@ The FAID project revolutionizes the detection of deepfake content through advanc
     │       └── utils.py
     └── data
         ├── FAIDSet
-        │   ├── deepseek-text
-        │   ├── gemini-text
-        │   ├── gpt-text
-        │   ├── human---deepseek-text
-        │   ├── human---gemini-text
-        │   ├── human---gpt-text
-        │   ├── human---llama-text
-        │   ├── human-text
-        │   └── llama-text
         ├── Unseen_Domain
-        │   ├── deepseek-text
-        │   ├── gemini-text
-        │   ├── gpt-text
-        │   ├── human---deepseek-text
-        │   ├── human---gemini-text
-        │   ├── human---gpt-text
-        │   ├── human---llama-text
-        │   ├── human-text
-        │   └── llama-text
         ├── Unseen_Domain_and_Unseen_Generator
-        │   ├── gemma-text
-        │   ├── human---gemma-text
-        │   ├── human---mistral-text
-        │   ├── human---qwen-text
-        │   ├── human-text
-        │   ├── mistral-text
-        │   └── qwen-text
         └── Unseen_Generator
-            ├── gemma-text
-            ├── human---gemma-text
-            ├── human---mistral-text
-            ├── human---qwen-text
-            ├── human-text
-            ├── mistral-text
-            └── qwen-text
 ```
 ---
 ## 🚀 Getting Started
@@ -161,7 +129,10 @@ Run the test suite using the following command:
 ---
 ## 📌 News
 
+**[2026.01.04]** Our research paper is accepted to EACL 2026 Main Conference!
+
 **[2025.05.20]** Our research paper now publicly accessible on arXiv.
+
 **[2025.05.06]** Our project is publicly accessible.
 
 ---
