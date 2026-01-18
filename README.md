@@ -18,6 +18,8 @@
 </div>
 <br clear="right">
 
+> The dataset of this project, FAIDSet is explicitly available at HuggingFace dataset [ngocminhta/FAIDSet](https://huggingface.co/datasets/ngocminhta/FAIDSet)
+
 ## 🔗 Table of Contents
 
 - [🔗 Table of Contents](#-table-of-contents)
